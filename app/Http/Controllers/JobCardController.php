@@ -273,11 +273,16 @@ class JobCardController extends Controller
         $jobCard = JobCard::find($id);
         $jobCard->dataInicio = date('Y-m-d H:i:s', strtotime("+2 hour"));
         $jobCard->status = 'Em curso';
-        $jobCard->update();
+        $jobCard->save();
 
-        //return response()->json([ 'success'=> 'Job Card Iniciado com sucesso!']);
-        //return view('jobs.show',compact('jobCard'));
-        MailController::basic_email('celen@celeninvestimentos.com', 'Celen', 'Inicio de Jobcard - '.$jobCard->referencia, 'O Job Card '. $jobCard->referencia . ' Iniciou, está na hora de emitir fatura');
+
+        $message['intro'] =  'Lembrete emissão de fatura. O Job Card ' . $jobCard->referencia . ' terminou';
+        $message['customer'] =  $jobCard->car->customer['name'] . $jobCard->car->customer['surname'];
+        $message['matricula'] =  $jobCard->car['matricula'];
+        $message['marca'] =  $jobCard->car['marca'];
+        $message['modelo'] =  $jobCard->car['modelo'];
+
+        MailController::basic_email('celen@celeninvestimentos.com', 'Celen', 'Inicio de Jobcard - '.$jobCard->referencia, $message);
 
         return redirect()->back();
     }
@@ -286,13 +291,18 @@ class JobCardController extends Controller
     public function close($id)
     {
         $jobCard = JobCard::find($id);
+        
         $jobCard->dataFim = date('Y-m-d H:i:s', strtotime("+2 hour"));
         $jobCard->status = 'Fechado';
         $jobCard->save();
 
-        //return response()->json([ 'success'=> 'Job Card Iniciado com sucesso!']);
-        //return view('jobs.show',compact('jobCard'));
-        MailController::basic_email('celen@celeninvestimentos.com', 'Celen', 'Fim do Job - '. $jobCard->referencia, 'O Job Card '. $jobCard->referencia . ' Terminou, está na hora de emitir cotacão');
+        $message['intro'] =  'Lembrete! Emissão cotacão. O Job Card '. $jobCard->referencia . ' Iniciou';
+        $message['customer'] =  $jobCard->car->customer['name'] . $jobCard->car->customer['surname'];
+        $message['matricula'] =  $jobCard->car['matricula'];
+        $message['marca'] =  $jobCard->car['marca'];
+        $message['modelo'] =  $jobCard->car['modelo'];
+        
+        MailController::basic_email('celen@celeninvestimentos.com', 'Celen', 'Fim do Job - '. $jobCard->referencia, $message);
 
         return redirect()->back();
     }

@@ -31,7 +31,7 @@ class CustomerController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = Customer::where('type', 'Singular');
+            $data = Customer::where(['type'=> 'Singular', 'status'=>'Active']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('acção', function (Customer $customer) {
@@ -60,7 +60,7 @@ class CustomerController extends Controller
     public function companies(Request $request)
     {
         if ($request->ajax()) {
-            $data = Customer::where('type', 'Company');
+            $data = Customer::where(['type' => 'Company', 'status'=>'Active']);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('acção', function (Customer $customer) {
@@ -365,8 +365,8 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $customer = Customer::find($id);
-        //$customer->status = 'Deleted';
-        $customer->deleted_at = Carbon::now();
+        $customer->status = 'Deleted';
+        //$customer->deleted_at = Carbon::now();
         $customer->save();
 
         return response()->json(['success' => 'Cliente apagado com sucesso!']);

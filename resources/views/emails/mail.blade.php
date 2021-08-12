@@ -1,7 +1,18 @@
 @extends('template.head')
 
-Hello <strong>{{ $name }}</strong>,
-<p>{{$body}}</p>
+
+<body>
+    
+<p style="color:black"> {{$body['intro']}}</p>
+<br>
+<br>
+<strong style="display: inline;color:black">Cliente:</strong> <p style="display: inline;color:black">{{$body['customer']}}</p>
+<br>
+<strong style="display: inline;color:black">Matrícula da Viatura:</strong>  <p style="display: inline;color:black">{{$body['matricula']}}</p>
+<br>
+<strong style="display: inline;color:black">Marca da Viatura:</strong> <p style="display: inline;color:black">{{$body['marca']}}</p> 
+<br>
+<strong style="display: inline;color:black">Modelo da Viatura:</strong> <p style="display: inline;color:black"> {{$body['modelo']}}</p>
 
 <div style="font-size: 10pt; font-family: Arial, sans-serif;margin-top:100px">
     <TABLE style="WIDTH: 440px" cellSpacing="0" cellPadding="0" border="0">
@@ -9,7 +20,7 @@ Hello <strong>{{ $name }}</strong>,
             <TR>
                 <TD style="FONT-SIZE: 10pt; FONT-FAMILY: Arial, sans-serif; WIDTH: 440px; PADDING-BOTTOM: 10px; line-height:13pt;" vAlign="top" colSpan="2">
 
-                    <STRONG><SPAN style="FONT-SIZE: 18pt; FONT-FAMILY: Tahoma">Celen Investimentos</SPAN><BR>
+                    <STRONG><SPAN style="FONT-SIZE: 18pt; FONT-FAMILY: Tahoma;color:red">Celen Investimentos</SPAN><BR>
                         <SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: Tahoma; COLOR: #808080">Bate-chapa, Pintura, Mecânica Geral, Aluguer de Viaturas</SPAN></STRONG>
 
                 </TD>
@@ -21,11 +32,9 @@ Hello <strong>{{ $name }}</strong>,
 
                 <TD style="WIDTH: 259px; PADDING-BOTTOM: 15px" vAlign="middle" align="right">
 
-                    <span><a href="{facebookURL}" target="_blank" rel="noopener"><img border="0" width="30" src="fb.png" alt="facebook icon" style="border:0; height:33px; width:30px"></a></span>
-                    <span><a href="{twitterURL}" target="_blank" rel="noopener"><img border="0" width="30" src="tt.png" alt="twitter icon" style="border:0; height:33px; width:30px"></a></span>
-                    <span><a href="{youtubeURL}" target="_blank" rel="noopener"><img border="0" width="30" src="yt.png" alt="youtube icon" style="border:0; height:33px; width:30px"></a></span>
-                    <span><a href="{linkedinURL}" target="_blank" rel="noopener"><img border="0" width="30" src="ln.png" alt="linkedin icon" style="border:0; height:33px; width:30px"></a></span>
-                    <span><a href="{instagramURL}" target="_blank" rel="noopener"><img border="0" width="30" src="it.png" alt="instagram icon" style="border:0; height:33px; width:30px"></a></span>
+                    <span><a href="https://www.facebook.com/CELEN-Investimentos-201664367369109" target="_blank" rel="noopener"><img border="0" width="30" src="{{ asset('assets/images/ico/facebook.png')}}" alt="facebook icon" style="border:0; height:30px; width:30px"></a></span>
+                     <span><a href="#" target="_blank" rel="noopener"><img border="0" width="30" src="{{ asset('assets/images/ico/linkedin.png')}}" alt="linkedin icon" style="border:0; height:30px; width:30px"></a></span>
+                    <span><a href="https://www.instagram.com/celen.investimentos/" target="_blank" rel="noopener"><img border="0" width="30" src="{{ asset('assets/images/ico/instagram.png')}}" alt="instagram icon" style="border:0; height:30px; width:30px"></a></span>
 
                 </TD>
             </TR>
@@ -41,7 +50,7 @@ Hello <strong>{{ $name }}</strong>,
                         <br><strong style="color:#000000;">Endereço: </strong><span>Bairro Costa do SOl, rua 4694, 442 - R/C Maputo - Moçambique</span>
                     </span>
 
-                    <br><br><a href="#" target="_blank" rel="noopener" style=" text-decoration:none;"><strong style="color:#000000; font-family:Arial, sans-serif;">www.celeninvestimentos.com</strong></a>
+                    <br><br><a href="#" target="_blank" rel="noopener"><strong style="color:#000000; font-family:Arial, sans-serif;">www.celeninvestimentos.com</strong></a>
 
                 </TD>
             </TR>
@@ -59,3 +68,4 @@ Hello <strong>{{ $name }}</strong>,
         </TBODY>
     </TABLE>
 </div>
+</body>
