@@ -9,3 +9,9 @@ It include:
 - Manage employees
 - Assign Employees to a jobcard
 - ...
+
+## Tech Stack
+
+**Client:** Laravel, HTML, Blade, JQuery, CSS, Bootstrap
+
+**Server:** Laravel, PHP
